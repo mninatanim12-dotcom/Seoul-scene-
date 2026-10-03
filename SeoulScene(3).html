@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeoulScene — K-Drama World</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#fff7fb;color:#241c25}
+header{background:linear-gradient(135deg,#26152f,#7c3f72);color:white;padding:22px 18px;position:sticky;top:0;z-index:10}
+nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:27px;font-weight:800;letter-spacing:.5px}
+.logo span{color:#ffb6d9}
+nav a{color:white;text-decoration:none;margin-left:16px;font-size:14px}
+.hero{max-width:1100px;margin:0 auto;padding:65px 18px 55px;text-align:center}
+.hero h1{font-size:46px;margin-bottom:14px}
+.hero p{max-width:650px;margin:auto;color:#655866;font-size:17px;line-height:1.6}
+.search{margin:28px auto 0;display:flex;max-width:560px;background:white;border-radius:30px;padding:7px;box-shadow:0 8px 30px #6b31501c}
+.search input{flex:1;border:0;outline:0;padding:13px 17px;font-size:15px;background:transparent}
+.search button{border:0;border-radius:24px;background:#d65b91;color:white;padding:12px 20px;font-weight:bold}
+section{max-width:1100px;margin:auto;padding:18px}
+.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.title h2{font-size:25px}.title span{color:#a34b79;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 25px #4b213514;transition:.2s}
+.card:hover{transform:translateY(-4px)}
+.poster{height:260px;background:linear-gradient(135deg,#f2bfd5,#795275);display:flex;align-items:end;padding:15px;color:white;font-weight:800;font-size:20px}
+.card:nth-child(2) .poster{background:linear-gradient(135deg,#b7d4e8,#536b87)}
+.card:nth-child(3) .poster{background:linear-gradient(135deg,#f0d49a,#9d5267)}
+.card:nth-child(4) .poster{background:linear-gradient(135deg,#c5b7e8,#58436e)}
+.info{padding:15px}.info h3{margin-bottom:7px}.meta{font-size:13px;color:#766a76}.rating{margin-top:10px;color:#c47a25;font-weight:bold}
+footer{margin-top:55px;background:#26152f;color:#ddd;padding:30px 18px;text-align:center}
+@media(max-width:600px){.hero h1{font-size:35px}nav a{display:none}.poster{height:230px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">Seoul<span>Scene</span> 🌸</div>
+<div><a href="#home">Home</a><a href="#popular">Popular</a><a href="#romance">Romance</a><a href="#cdrama">C-Drama</a><a href="#movies">Movies</a></div>
+</nav>
+</header>
+
+<main id="home">
+<div class="hero">
+<h1>Your K-Drama Scene Starts Here ✨</h1>
+<p>Discover romantic stories, unforgettable characters, and your next favorite Korean drama.</p>
+<div class="search">
+<input id="search" placeholder="Search a K-drama...">
+<button onclick="searchDrama()">Search</button>
+</div>
+<div style="margin:14px auto 0;max-width:560px;text-align:left">
+<label for="subtitles" style="font-size:13px;color:#765d70">Subtitles:</label>
+<select id="subtitles" style="margin-left:8px;padding:8px 12px;border:1px solid #ead6e2;border-radius:18px;background:white">
+<option>English</option><option>Amharic</option><option>French</option><option>Korean</option><option>Chinese</option>
+</select>
+</div>
+</div>
+
+<section id="popular">
+<div class="title"><h2>🔥 K-Drama Library</h2><span>Lots to discover</span></div>
+<div class="grid" id="dramas"></div>
+</section>
+
+<section id="romance" style="padding-top:45px">
+<div class="title"><h2>💕 Romance Picks</h2><span>For your next binge</span></div>
+<div class="grid">
+<div class="card"><div class="poster">True Beauty</div><div class="info"><h3>True Beauty</h3><div class="meta">Romance · School · Comedy</div><div class="rating">★ 8.0</div></div></div>
+<div class="card"><div class="poster">Business Proposal</div><div class="info"><h3>Business Proposal</h3><div class="meta">Romance · Comedy · Office</div><div class="rating">★ 8.1</div></div></div>
+<div class="card"><div class="poster">Lovely Runner</div><div class="info"><h3>Lovely Runner</h3><div class="meta">Romance · Fantasy · Youth</div><div class="rating">★ 8.9</div></div></div>
+<div class="card"><div class="poster">Queen of Tears</div><div class="info"><h3>Queen of Tears</h3><div class="meta">Romance · Family · Drama</div><div class="rating">★ 8.5</div></div></div>
+</div>
+</section>
+
+
+<section id="cdrama" style="padding-top:45px">
+<div class="title"><h2>🇨🇳 C-Dramas</h2><span>Chinese drama picks</span></div>
+<div class="grid">
+<div class="card"><div class="poster">When I Fly Towards You</div><div class="info"><h3>When I Fly Towards You</h3><div class="meta">C-Drama · Romance · Youth</div><div class="rating">★ 8.6</div></div></div>
+<div class="card"><div class="poster">Hidden Love</div><div class="info"><h3>Hidden Love</h3><div class="meta">C-Drama · Romance · Youth</div><div class="rating">★ 8.8</div></div></div>
+<div class="card"><div class="poster">Exclusive Fairytale</div><div class="info"><h3>Exclusive Fairytale</h3><div class="meta">C-Drama · Romance · Comedy</div><div class="rating">Unrated</div></div></div>
+<div class="card"><div class="poster">Falling Into Your Smile</div><div class="info"><h3>Falling Into Your Smile</h3><div class="meta">C-Drama · Romance · E-sports</div><div class="rating">★ 8.5</div></div></div>
+<div class="card"><div class="poster">Love Me, Love My Voice</div><div class="info"><h3>Love Me, Love My Voice</h3><div class="meta">C-Drama · Romance · Music</div><div class="rating">Unrated</div></div></div>
+<div class="card"><div class="poster">A Love So Beautiful</div><div class="info"><h3>A Love So Beautiful</h3><div class="meta">C-Drama · Romance · School</div><div class="rating">★ 8.1</div></div></div>
+</div>
+</section>
+<section id="movies" style="padding-top:45px">
+<div class="title"><h2>🎥 Korean Movies</h2><span>Movie night</span></div>
+<div class="grid">
+<div class="card"><div class="poster">20th Century Girl</div><div class="info"><h3>20th Century Girl</h3><div class="meta">Romance · Youth · Drama</div><div class="rating">★ 8.0</div></div></div>
+<div class="card"><div class="poster">Midnight Runners</div><div class="info"><h3>Midnight Runners</h3><div class="meta">Action · Comedy · Crime</div><div class="rating">★ 8.2</div></div></div>
+<div class="card"><div class="poster">The Witch: Part 1</div><div class="info"><h3>The Witch: Part 1</h3><div class="meta">Action · Mystery · Thriller</div><div class="rating">★ 8.0</div></div></div>
+<div class="card"><div class="poster">Extreme Job</div><div class="info"><h3>Extreme Job</h3><div class="meta">Comedy · Action · Crime</div><div class="rating">★ 8.0</div></div></div>
+</div>
+</section>
+</main>
+
+<footer>🌸 SeoulScene · Your little corner of K-drama</footer>
+
+<script>
+const list=[
+["Crash Landing on You","K-Drama · Romance · Drama","★ 8.8"],
+["Business Proposal","K-Drama · Romance · Comedy","★ 8.1"],
+["True Beauty","K-Drama · Romance · School","★ 8.0"],
+["Lovely Runner","K-Drama · Romance · Fantasy","★ 8.9"],
+["Queen of Tears","K-Drama · Romance · Family","★ 8.5"],
+["My Demon","K-Drama · Romance · Fantasy","★ 8.1"],
+["Twinkling Watermelon","K-Drama · Youth · Fantasy","Unrated"],
+["Family by Choice","K-Drama · Youth · Family","Unrated"],
+["Twenty-Five Twenty-One","K-Drama · Romance · Youth","★ 8.7"],
+["Weightlifting Fairy Kim Bok-joo","K-Drama · Romance · Comedy","★ 8.7"],
+["Strong Woman Do Bong-soon","K-Drama · Romance · Fantasy","★ 8.7"],
+["What's Wrong with Secretary Kim","K-Drama · Romance · Office","★ 8.1"],
+["Her Private Life","K-Drama · Romance · Office","Unrated"],
+["Hometown Cha-Cha-Cha","K-Drama · Romance · Comedy","★ 8.7"],
+["Start-Up","K-Drama · Romance · Youth","★ 8.0"],
+["Nevertheless","K-Drama · Romance · Youth","Unrated"],
+["Our Beloved Summer","K-Drama · Romance · Youth","★ 8.2"],
+["Extraordinary You","K-Drama · Romance · School","Unrated"],
+["A Love So Beautiful","K-Drama · Romance · School","Unrated"],
+["My ID Is Gangnam Beauty","K-Drama · Romance · School","★ 7.9"],
+["True to Love","K-Drama · Romance · Comedy","Unrated"],
+["Doom at Your Service","K-Drama · Romance · Fantasy","★ 8.0"],
+["Hotel Del Luna","K-Drama · Fantasy · Romance","★ 8.2"],
+["Goblin","K-Drama · Fantasy · Romance","★ 8.6"],
+["The King: Eternal Monarch","K-Drama · Fantasy · Romance","★ 8.1"],
+["W: Two Worlds","K-Drama · Fantasy · Romance","Unrated"],
+["While You Were Sleeping","K-Drama · Fantasy · Romance","★ 8.3"],
+["Legend of the Blue Sea","K-Drama · Fantasy · Romance","★ 8.1"],
+["My Roommate Is a Gumiho","K-Drama · Fantasy · Romance","Unrated"],
+["See You in My 19th Life","K-Drama · Fantasy · Romance","★ 8.2"],
+["Destined with You","K-Drama · Fantasy · Romance","Unrated"],
+["Alchemy of Souls","K-Drama · Fantasy · Romance","★ 8.7"],
+["The Atypical Family","K-Drama · Fantasy · Romance","Unrated"],
+["Lovely Horribly","K-Drama · Fantasy · Comedy","Unrated"],
+["Itaewon Class","K-Drama · Drama · Youth","★ 8.2"],
+["Vincenzo","K-Drama · Crime · Comedy","★ 8.4"],
+["The Glory","K-Drama · Thriller · Drama","★ 8.6"],
+["Weak Hero Class 1","K-Drama · Action · School","★ 9.0"],
+["Moving","K-Drama · Action · Fantasy","★ 8.9"],
+["Bloodhounds","K-Drama · Action · Crime","Unrated"],
+["My Name","K-Drama · Action · Thriller","★ 8.7"],
+["Vagabond","K-Drama · Action · Thriller","★ 8.1"],
+["Taxi Driver","K-Drama · Action · Crime","★ 8.8"],
+["Flower of Evil","K-Drama · Thriller · Romance","★ 8.6"],
+["Mouse","K-Drama · Thriller · Mystery","Unrated"],
+["Beyond Evil","K-Drama · Thriller · Mystery","★ 8.7"],
+["Stranger","K-Drama · Crime · Mystery","★ 8.6"],
+["Signal","K-Drama · Crime · Fantasy","★ 8.5"],
+["Tunnel","K-Drama · Crime · Fantasy","Unrated"],
+["Healer","K-Drama · Action · Romance","★ 8.5"],
+["Descendants of the Sun","K-Drama · Romance · Action","★ 8.3"],
+["The K2","K-Drama · Action · Romance","Unrated"],
+["City Hunter","K-Drama · Action · Romance","Unrated"],
+["Doctor Stranger","K-Drama · Medical · Romance","Unrated"],
+["The Penthouse","K-Drama · Drama · Thriller","★ 8.0"],
+["Sky Castle","K-Drama · Drama · Mystery","★ 8.5"],
+["Reborn Rich","K-Drama · Drama · Revenge","★ 8.6"],
+["The World of the Married","K-Drama · Drama · Romance","★ 8.0"],
+["Marry My Husband","K-Drama · Romance · Revenge","★ 8.6"],
+["Perfect Marriage Revenge","K-Drama · Romance · Revenge","Unrated"],
+["Little Women","K-Drama · Drama · Mystery","★ 8.0"],
+["Mine","K-Drama · Drama · Mystery","Unrated"],
+["Eve","K-Drama · Drama · Revenge","Unrated"],
+["The Penthouse 2","K-Drama · Drama · Thriller","Unrated"],
+["The Penthouse 3","K-Drama · Drama · Thriller","Unrated"],
+["Extraordinary Attorney Woo","K-Drama · Drama · Legal","★ 8.6"],
+["Hospital Playlist","K-Drama · Medical · Friendship","★ 8.8"],
+["Prison Playbook","K-Drama · Drama · Comedy","★ 8.5"],
+["Reply 1988","K-Drama · Family · Youth","★ 9.0"],
+["Reply 1997","K-Drama · Youth · Romance","Unrated"],
+["Reply 1994","K-Drama · Youth · Romance","Unrated"],
+["Because This Is My First Life","K-Drama · Romance · Comedy","★ 8.2"],
+["Fight for My Way","K-Drama · Romance · Comedy","★ 8.1"],
+["Romance Is a Bonus Book","K-Drama · Romance · Office","Unrated"],
+["Run On","K-Drama · Romance · Youth","Unrated"],
+["Soundtrack #1","K-Drama · Romance · Music","Unrated"],
+["Soundtrack #2","K-Drama · Romance · Music","Unrated"],
+["A Time Called You","K-Drama · Romance · Mystery","★ 7.8"],
+["The Interest of Love","K-Drama · Romance · Office","Unrated"],
+["King the Land","K-Drama · Romance · Comedy","★ 8.0"],
+["Love to Hate You","K-Drama · Romance · Comedy","★ 8.0"],
+["Crash Course in Romance","K-Drama · Romance · Comedy","★ 8.1"],
+["Welcome to Samdal-ri","K-Drama · Romance · Comedy","Unrated"],
+["Doctor Slump","K-Drama · Romance · Medical","★ 8.1"],
+["Lovely Runner","K-Drama · Romance · Fantasy","★ 8.9"],
+["Can This Love Be Translated?","K-Drama · Romance · Comedy","Unrated"],
+["When the Camellia Blooms","K-Drama · Romance · Drama","★ 8.3"],
+["It's Okay to Not Be Okay","K-Drama · Romance · Drama","★ 8.6"],
+["Youth of May","K-Drama · Romance · Historical","★ 8.5"],
+["The Red Sleeve","K-Drama · Historical · Romance","★ 8.7"],
+["Mr. Queen","K-Drama · Historical · Comedy","★ 8.8"],
+["Under the Queen's Umbrella","K-Drama · Historical · Comedy","Unrated"],
+["100 Days My Prince","K-Drama · Historical · Romance","★ 8.0"],
+["The Tale of Nokdu","K-Drama · Historical · Romance","Unrated"],
+["Moon Lovers: Scarlet Heart Ryeo","K-Drama · Historical · Romance","★ 8.6"],
+["Love in the Moonlight","K-Drama · Historical · Romance","★ 8.2"],
+["The Uncanny Counter","K-Drama · Action · Fantasy","★ 8.5"],
+["All of Us Are Dead","K-Drama · Horror · School","★ 8.4"],
+["Sweet Home","K-Drama · Horror · Fantasy","★ 8.0"],
+["Kingdom","K-Drama · Historical · Horror","★ 8.4"],
+["Happiness","K-Drama · Thriller · Romance","★ 8.5"],
+["Duty After School","K-Drama · Action · School","Unrated"],
+["Pyramid Game","K-Drama · Thriller · School","Unrated"],
+["Hierarchy","K-Drama · School · Drama","Unrated"],
+["Extracurricular","K-Drama · Crime · School","★ 8.1"],
+["Class of Lies","K-Drama · School · Mystery","Unrated"],
+["Revenge of Others","K-Drama · School · Thriller","Unrated"],
+["Boys Over Flowers","K-Drama · Romance · School","★ 7.9"],
+["The Heirs","K-Drama · Romance · School","★ 7.5"],
+["Playful Kiss","K-Drama · Romance · School","Unrated"],
+["Dream High","K-Drama · Music · School","Unrated"],
+["The Liar and His Lover","K-Drama · Music · Romance","Unrated"],
+["Imitation","K-Drama · Music · Romance","Unrated"],
+["So I Married the Anti-Fan","K-Drama · Romance · Comedy","Unrated"],
+["Dali and Cocky Prince","K-Drama · Romance · Comedy","Unrated"],
+["Mad for Each Other","K-Drama · Romance · Comedy","Unrated"],
+["Sh**ting Stars","K-Drama · Romance · Comedy","Unrated"],
+["Touch Your Heart","K-Drama · Romance · Office","★ 8.0"],
+["What's Wrong with Secretary Kim","K-Drama · Romance · Office","★ 8.1"],
+["Jugglers","K-Drama · Romance · Office","Unrated"],
+["She Was Pretty","K-Drama · Romance · Comedy","★ 7.6"],
+["Oh My Venus","K-Drama · Romance · Comedy","Unrated"],
+["Fight for My Way","K-Drama · Romance · Comedy","★ 8.1"],
+["Secret Garden","K-Drama · Romance · Fantasy","★ 8.1"],
+["My Lovely Liar","K-Drama · Romance · Mystery","Unrated"],
+["The Story of Park's Marriage Contract","K-Drama · Romance · Fantasy","Unrated"],
+["From Now On, Showtime!","K-Drama · Fantasy · Comedy","Unrated"],
+["The Judge from Hell","K-Drama · Fantasy · Romance","Unrated"],
+["Lovely Runner Special","K-Drama · Special · Romance","Unrated"]
+];
+const box=document.getElementById("dramas");
+function render(items){
+ box.innerHTML=items.map(x=>`<div class="card"><div class="poster">${x[0]}</div><div class="info"><h3>${x[0]}</h3><div class="meta">${x[1]}</div><div class="rating">${x[2]}</div></div></div>`).join("");
+}
+function searchDrama(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ render(q?list.filter(x=>x[0].toLowerCase().includes(q)):list);
+}
+render(list);
+</script>
+</body>
+</html>
